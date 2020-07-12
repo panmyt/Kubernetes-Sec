@@ -1,6 +1,6 @@
 docker run -it -p 5000:5000 registry
-docker build . -t malicious
 gcc shell.c -o shell
+docker build . -t malicious
 docker tag malicious localhost:5000/malicious
 docker push localhost:5000/malicious
 kubectl apply -f malicious.yml

@@ -15,4 +15,4 @@ spec:
   - name: storage
     hostPath:
       path: /tmp/shared
-      type: Directory
+      type: DirectoryOrCreate

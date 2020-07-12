@@ -1,7 +1,7 @@
 # before make command "sudo apt update && sudo apt upgrade -y && sudo apt full-upgrade" is recommended for the linux kernel to be upgraded 
 sudo make
 base64 docker-module.ko 
-docker run -itd ubuntu:latest
+docker run --privileged -itd alpine:latest
 docker exec -it <container id> /bin/sh
 # copy the output of base64 inside the container temp.ko file
 base64 -d /tmp/temp.ko > /tmp/docker_module.ko

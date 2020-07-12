@@ -3,3 +3,6 @@ kubectl get pods
 kubectl exec -it alpine -- /bin/sh
 apk add -U libcap
 capsh --print
+exit
+kubectl apply -f not-privileged.yml
+# same commnads

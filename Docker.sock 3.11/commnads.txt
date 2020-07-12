@@ -1,8 +1,8 @@
 kubectl apply -f docker-sock.yml
 kubectl get pods
-kubectl exec -it alpine-docsoc /bin/sh
+kubectl exec -it alpine-docsoc -- /bin/sh
 ls /var/run/docker.sock
-apk update
+apk update  # Maybe a DNS like Google is needed
 apk add -U docker
 docker -v
 docker -H unix:///var/run/docker.sock run -it -v /:/test:ro -t alpine sh
